@@ -99,6 +99,7 @@ function createMap(earthquakes) {
   var legend = L.control({position: 'bottomright'})
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend')
+        div.innerHTML = 'Depth (km) <br>'
         var categories = ['-10-10','10-30','30-50','50-70', '70-90', '90+']
         for (var i = 0; i < categories.length; i++) {
             div.innerHTML += '<i style="background:' + chooseColor(categories[i]) + '"></i> ' + (categories[i] + '<br>');
