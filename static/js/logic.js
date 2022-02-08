@@ -107,10 +107,4 @@ function createMap(earthquakes) {
         };
     legend.addTo(myMap);
   
-  // Add a textbox for description
-  var bounds = [[50.832941, -0.111312], [50.842941, -0.141312]];
-  var rectangle = L.rectangle(bounds, {color: "#ff7800", weight: 4})
-  rectangle.addTo(map);
-  rectangle.setText("This site takes data from a GEOJSON file from USGS for all earthquakes that happened the past day and maps them out.")
-  
 }
