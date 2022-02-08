@@ -100,7 +100,7 @@ function createMap(earthquakes) {
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend')
         var categories = ['-10-10','10-30','30-50','50-70', '70-90', '90+']
-        div.innerHTML = "Depth (km)"
+        div.innerHTML = 'Depth (km) <br>';
         for (var i = 0; i < categories.length; i++) {
             div.innerHTML += '<i style="background:' + chooseColor(categories[i]) + '"></i> ' + (categories[i] + '<br>');
             }
@@ -109,20 +109,9 @@ function createMap(earthquakes) {
     legend.addTo(myMap);
   
   // Add a textbox for description
-  L.Control.textbox = L.Control.extend({
-		onAdd: function(map) {
-			
-		var text = L.DomUtil.create('div');
-		text.id = "info_text";
-		text.innerHTML = "<strong>This site takes information from a GEOJSON file from USGS for all earthquakes that happened for the day, and maps it out.</strong>"
-		return text;
-		},
-
-		onRemove: function(map) {
-			// Nothing to do here
-		}
-	});
-	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-	L.control.textbox({ position: 'bottomleft' }).addTo(map);
+  var bounds = [[50.832941, -0.111312], [50.842941, -0.141312]];
+  var rectangle = L.rectangle(bounds, {color: "#ff7800", weight: 4})
+  rectangle.addTo(map);
+  rectangle.setText("This site takes data from a GEOJSON file from USGS for all earthquakes that happened the past day and maps them out.")
   
 }
