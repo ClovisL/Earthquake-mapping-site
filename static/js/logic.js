@@ -107,4 +107,22 @@ function createMap(earthquakes) {
             return div;
         };
     legend.addTo(myMap);
+  
+  // Add a textbox for description
+  L.Control.textbox = L.Control.extend({
+		onAdd: function(map) {
+			
+		var text = L.DomUtil.create('div');
+		text.id = "info_text";
+		text.innerHTML = "<strong>This site takes information from a GEOJSON file from USGS for all earthquakes that happened for the day, and maps it out.</strong>"
+		return text;
+		},
+
+		onRemove: function(map) {
+			// Nothing to do here
+		}
+	});
+	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
+	L.control.textbox({ position: 'bottomleft' }).addTo(map);
+  
 }
