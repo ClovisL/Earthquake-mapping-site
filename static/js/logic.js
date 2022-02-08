@@ -12,7 +12,7 @@ function createFeatures(earthquakeData) {
   function onEachFeature(feature, layer) {
     layer.bindPopup("<h3>" + feature.properties.place +
       "</h3><hr><h3>Magnitude: " + feature.properties.mag + "</h3>" +
-      "</h3><hr><h3>Depth: " + feature.geometry.coordinates[2] + " km</h3>");
+      "</h3><hr><h3>Depth (km): " + feature.geometry.coordinates[2] + "</h3>");
   }
 
   // Create a GeoJSON layer containing the features array on the earthquakeData object
@@ -100,7 +100,7 @@ function createMap(earthquakes) {
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend')
         var categories = ['-10-10','10-30','30-50','50-70', '70-90', '90+']
-        div.innerHTML += "Depth (km)"
+        div.innerHTML = "Depth (km)"
         for (var i = 0; i < categories.length; i++) {
             div.innerHTML += '<i style="background:' + chooseColor(categories[i]) + '"></i> ' + (categories[i] + '<br>');
             }
